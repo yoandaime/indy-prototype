@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment files (never commit secrets)
+.env
+.env.*
+
+# Internal reference material — not part of the app, kept out of the public repo
+/Reference-point/
+/src/data/dqcomposer_reference_v2_28_August/
+/src/data/reference-ndq-enrich-platform/
+
+# Backup of the old git history (kept local only, never commit)
+/.git-old-backup/
+
+# Kept on my computer only — not part of the public prototype repo
+/CLAUDE.md
+/DESIGN_HANDOVER.md
+/admin-preview.html
+/src/pages/DataObservabilityPage.jsx.zip
