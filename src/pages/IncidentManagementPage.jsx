@@ -63,6 +63,13 @@ import { cn } from "@/lib/utils"
 
 const PAGE_SIZE = 10
 
+// Stronger hover for inactive tabs: filled pill (segmented) or gray bg (line).
+const TAB_HOVER_CLASS = cn(
+  "text-foreground dark:text-foreground",
+  "not-data-active:hover:bg-background not-data-active:hover:text-foreground not-data-active:hover:shadow-sm",
+  "group-data-[variant=line]/tabs-list:not-data-active:hover:bg-neutral-100 group-data-[variant=line]/tabs-list:not-data-active:hover:text-foregroundgroup-data-[variant=line]/tabs-list:not-data-active:hover:shadow-none"
+)
+
 const BOARD_STATUSES = [STATUS.pending, STATUS.open, STATUS.inProgress, STATUS.solved]
 
 const STATUS_FILTER_OPTIONS = [
@@ -76,10 +83,10 @@ const PRIORITY_FILTER_OPTIONS = [
 ]
 
 const KANBAN_COLUMNS = [
-  { status: STATUS.pending, bgClass: "bg-gray-50", countClass: "text-gray-700" },
-  { status: STATUS.open, bgClass: "bg-sky-50", countClass: "text-sky-700" },
-  { status: STATUS.inProgress, bgClass: "bg-amber-50", countClass: "text-amber-700" },
-  { status: STATUS.solved, bgClass: "bg-emerald-50", countClass: "text-emerald-700" },
+  { status: STATUS.pending, bgClass: "bg-amber-50", countClass: "text-amber-700" },
+  { status: STATUS.open, bgClass: "bg-red-50", countClass: "text-red-700" },
+  { status: STATUS.inProgress, bgClass: "bg-sky-50", countClass: "text-sky-700" },
+  { status: STATUS.solved, bgClass: "bg-green-50", countClass: "text-green-700" },
 ]
 
 function formatDateTime(iso) {
@@ -239,11 +246,11 @@ export default function IncidentManagementPage() {
         <div className="flex flex-wrap items-start justify-between gap-4">
           <Tabs value={boardTab} onValueChange={handleBoardTabChange}>
             <TabsList variant="line">
-              <TabsTrigger value="board">
+              <TabsTrigger value="board" className={TAB_HOVER_CLASS}>
                 <Presentation />
                 Board
               </TabsTrigger>
-              <TabsTrigger value="archive">
+              <TabsTrigger value="archive" className={TAB_HOVER_CLASS}>
                 <Archive />
                 Archive
               </TabsTrigger>
@@ -260,16 +267,16 @@ export default function IncidentManagementPage() {
           <div className="flex flex-wrap items-center gap-2.5">
             <Tabs value={viewMode} onValueChange={setViewMode}>
               <TabsList>
-                <TabsTrigger value="grid">
+                <TabsTrigger value="grid" className={TAB_HOVER_CLASS}>
                   <LayoutGrid />
                   Grid
                 </TabsTrigger>
-                <TabsTrigger value="list">
+                <TabsTrigger value="list" className={TAB_HOVER_CLASS}>
                   <ListIcon />
                   List
                 </TabsTrigger>
                 {boardTab === "board" && (
-                  <TabsTrigger value="kanban">
+                  <TabsTrigger value="kanban" className={TAB_HOVER_CLASS}>
                     <KanbanIcon />
                     Kanban
                   </TabsTrigger>
